@@ -14,6 +14,7 @@
     <mockito.core.version>1.9.0</mockito.core.version>
     <hibernate.entitymanager.version>4.1.2</hibernate.entitymanager.version>
     <hsqldb.version>2.2.8</hsqldb.version>
+    <guice-persist.version>3.0</guice-persist.version>
   </properties>
 
   <dependencies>
@@ -49,6 +50,11 @@
     	<groupId>org.hsqldb</groupId>
     	<artifactId>hsqldb</artifactId>
     	<version>${hsqldb.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.google.inject.extensions</groupId>
+    	<artifactId>guice-persist</artifactId>
+    	<version>${guice-persist.version}</version>
     </dependency>
   </dependencies>
 

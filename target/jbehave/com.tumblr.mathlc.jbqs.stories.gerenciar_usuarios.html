@@ -1,0 +1,43 @@
+<div class="story">
+<h1></h1>
+<div class="path">com/tumblr/mathlc/jbqs/stories/gerenciar_usuarios.story</div>
+<div class="scenario">
+<h2>Scenario: Usu&aacute;rio v&aacute;lido deve ser salvo.</h2>
+<div class="step successful">Given um usu&aacute;rio A com e-mail <span class="step parameter">foo@bar.baz</span></div>
+<div class="step successful">When A for salvo</div>
+<div class="step successful">Then A deve ser persistido pelo reposit&oacute;rio.</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Usu&aacute;rio sem e-mail n&atilde;o deve ser salvo.</h2>
+<div class="step successful">Given um usu&aacute;rio B sem e-mail</div>
+<div class="step successful">When B for salvo</div>
+<div class="step successful">Then a obrigatoriedade do e-mail deve impedir a opera&ccedil;&atilde;o.</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Usu&aacute;rio com e-mail inv&aacute;lido n&atilde;o deve ser salvo.</h2>
+<div class="step successful">Given um usu&aacute;rio C com e-mail <span class="step parameter">foo</span></div>
+<div class="step successful">When C for salvo</div>
+<div class="step successful">Then a validade do e-mail deve impedir a opera&ccedil;&atilde;o.</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Consulta a usu&aacute;rios deve permitir filtro por nome.</h2>
+<div class="step successful">Given os usu&aacute;rios:
+<span class="step parameter"><table>
+<thead>
+<tr>
+<th>email</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>foo@domain.com</td></tr>
+<tr>
+<td>foobar@domain.com</td></tr>
+<tr>
+<td>bar@domain.com</td></tr>
+</tbody>
+</table>
+</span></div>
+<div class="step successful">When consultar por <span class="step parameter">foo</span></div>
+<div class="step successful">Then deve retornar os usu&aacute;rios <span class="step parameter">foo@domain.com</span> e <span class="step parameter">foobar@domain.com</span>.</div>
+</div>
+</div>

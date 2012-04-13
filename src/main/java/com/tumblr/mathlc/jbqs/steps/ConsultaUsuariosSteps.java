@@ -1,7 +1,7 @@
 package com.tumblr.mathlc.jbqs.steps;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import com.tumblr.mathlc.jbqs.UsuarioRepository;
 public class ConsultaUsuariosSteps {
 	private List<String> result;
 	private EntityTransaction entityTransaction;
-	
+
 	@Inject
 	private EntityManager entityManager;
 	

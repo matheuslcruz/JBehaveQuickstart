@@ -1,17 +1,14 @@
 package com.tumblr.mathlc.jbqs;
 
-import static org.mockito.Mockito.*;
-
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
 import static org.jbehave.core.reporters.Format.TXT;
 import static org.jbehave.core.reporters.Format.XML;
+import static org.mockito.Mockito.mock;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -34,6 +31,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Scopes;
+import com.google.inject.persist.PersistService;
+import com.google.inject.persist.jpa.JpaPersistModule;
 import com.tumblr.mathlc.jbqs.steps.ConsultaUsuariosSteps;
 import com.tumblr.mathlc.jbqs.steps.UsuarioComEMailInvalidoSteps;
 import com.tumblr.mathlc.jbqs.steps.UsuarioSemEMailSteps;
@@ -77,6 +76,7 @@ public class MyStories extends JUnitStories {
     @Override
     public InjectableStepsFactory stepsFactory() {
         Injector injector = Guice.createInjector(new StepsModule());
+        injector.getInstance(PersistService.class).start();
         return new GuiceStepsFactory(configuration(), injector);
     }
 
@@ -84,7 +84,7 @@ public class MyStories extends JUnitStories {
 
         @Override
         protected void configure() {
-        	bind(EntityManager.class).toProvider(EntityManagerProvier.class).in(Scopes.SINGLETON);
+        	install(new JpaPersistModule("jbehave-quickstart"));
         	bind(UsuarioRepository.class).toInstance(mock(UsuarioRepository.class));
         	bind(UsuarioRepository.class).annotatedWith(Implemented.class).to(UsuarioJpaRepository.class);
         	bind(UsuarioService.class).in(Scopes.SINGLETON);
