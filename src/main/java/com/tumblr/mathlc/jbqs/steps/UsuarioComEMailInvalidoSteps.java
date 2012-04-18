@@ -22,7 +22,7 @@ public class UsuarioComEMailInvalidoSteps {
 	
 	@Given("um usuário C com e-mail $e")
 	public void setUsuario(String e) {
-		usuario = new Usuario();
+		usuario = service.getUsuario();
 		usuario.setEmail(e);
 	}
 	

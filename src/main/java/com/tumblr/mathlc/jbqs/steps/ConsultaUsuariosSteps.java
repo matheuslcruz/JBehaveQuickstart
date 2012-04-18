@@ -22,6 +22,7 @@ import com.google.inject.Inject;
 import com.tumblr.mathlc.jbqs.Implemented;
 import com.tumblr.mathlc.jbqs.Usuario;
 import com.tumblr.mathlc.jbqs.UsuarioRepository;
+import com.tumblr.mathlc.jbqs.UsuarioService;
 
 public class ConsultaUsuariosSteps {
 	private List<String> result;
@@ -29,6 +30,9 @@ public class ConsultaUsuariosSteps {
 
 	@Inject
 	private EntityManager entityManager;
+	
+	@Inject
+	private UsuarioService service;
 	
 	@Inject
 	@Implemented
@@ -43,7 +47,7 @@ public class ConsultaUsuariosSteps {
 	@Given("os usuários: $us")
 	public void setUsuarios(ExamplesTable us) {
 		for (Map<String, String> i: us.getRows()) {
-			Usuario u = new Usuario();
+			Usuario u = service.getUsuario();
 			u.setEmail(i.get("email"));
 			repository.save(u);
 		}

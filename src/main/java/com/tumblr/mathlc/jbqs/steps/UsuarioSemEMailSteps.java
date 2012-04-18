@@ -23,7 +23,7 @@ public class UsuarioSemEMailSteps {
 
 	@Given("um usuário B sem e-mail")
 	public void setUsuario() {
-		usuario = new Usuario();
+		usuario = service.getUsuario();
 	}
 	
 	@When("B for salvo")
